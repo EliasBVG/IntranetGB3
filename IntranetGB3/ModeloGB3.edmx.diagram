@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e031c5673cfe40b892474b18ac5d549d" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_GBModel.ActividadesSet" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.AdministradorSet" Width="1.5" PointX="7.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.AlumnoSet" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.CursoSet" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.EvaluacionesSet" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.ProgramasSet" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.UsuarioSet" Width="1.5" PointX="10.625" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.UsuarioSet_Apoderado" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GBModel.UsuarioSet_Educadora" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="BD_GBModel.FK_ActividadesEvaluaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GBModel.FK_ProgramasActividades" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GBModel.FK_AlumnoEvaluaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GBModel.FK_ApoderadoAlumno" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GBModel.FK_CursoAlumno" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GBModel.FK_CursoProgramas" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GBModel.FK_FuncionarioCurso" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD_GBModel.Archivos" Width="1.5" PointX="3" PointY="0.5" />
+        <AssociationConnector Association="BD_GBModel.ArchivosActividadesSet" />
+        <InheritanceConnector EntityType="BD_GBModel.UsuarioSet_Apoderado" />
+        <InheritanceConnector EntityType="BD_GBModel.UsuarioSet_Educadora" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BD_GBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BD_GBModelStoreContainer">
+    <EntitySet Name="ActividadesSet" EntityType="BD_GBModel.Store.ActividadesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AdministradorSet" EntityType="BD_GBModel.Store.AdministradorSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AlumnoSet" EntityType="BD_GBModel.Store.AlumnoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CursoSet" EntityType="BD_GBModel.Store.CursoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EvaluacionesSet" EntityType="BD_GBModel.Store.EvaluacionesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProgramasSet" EntityType="BD_GBModel.Store.ProgramasSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuarioSet" EntityType="BD_GBModel.Store.UsuarioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuarioSet_UsuarioSet_Apoderado" EntityType="BD_GBModel.Store.UsuarioSet_UsuarioSet_Apoderado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuarioSet_UsuarioSet_Educadora" EntityType="BD_GBModel.Store.UsuarioSet_UsuarioSet_Educadora" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArchivosSet" EntityType="BD_GBModel.Store.ArchivosSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ActividadesEvaluaciones" Association="BD_GBModel.Store.FK_ActividadesEvaluaciones">
+      <End Role="ActividadesSet" EntitySet="ActividadesSet" />
+      <End Role="EvaluacionesSet" EntitySet="EvaluacionesSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProgramasActividades" Association="BD_GBModel.Store.FK_ProgramasActividades">
+      <End Role="ProgramasSet" EntitySet="ProgramasSet" />
+      <End Role="ActividadesSet" EntitySet="ActividadesSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlumnoEvaluaciones" Association="BD_GBModel.Store.FK_AlumnoEvaluaciones">
+      <End Role="AlumnoSet" EntitySet="AlumnoSet" />
+      <End Role="EvaluacionesSet" EntitySet="EvaluacionesSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApoderadoAlumno" Association="BD_GBModel.Store.FK_ApoderadoAlumno">
+      <End Role="UsuarioSet_Apoderado" EntitySet="UsuarioSet_UsuarioSet_Apoderado" />
+      <End Role="AlumnoSet" EntitySet="AlumnoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CursoAlumno" Association="BD_GBModel.Store.FK_CursoAlumno">
+      <End Role="CursoSet" EntitySet="CursoSet" />
+      <End Role="AlumnoSet" EntitySet="AlumnoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CursoProgramas" Association="BD_GBModel.Store.FK_CursoProgramas">
+      <End Role="ProgramasSet" EntitySet="ProgramasSet" />
+      <End Role="CursoSet" EntitySet="CursoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FuncionarioCurso" Association="BD_GBModel.Store.FK_FuncionarioCurso">
+      <End Role="CursoSet" EntitySet="CursoSet" />
+      <End Role="UsuarioSet_Educadora" EntitySet="UsuarioSet_UsuarioSet_Educadora" />
+    </AssociationSet>
+    <AssociationSet Name="ArchivosActividadesSet" Association="BD_GBModel.Store.ArchivosActividadesSet">
+      <End Role="Archivos" EntitySet="ArchivosSet" />
+      <End Role="ActividadesSet" EntitySet="ActividadesSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioSet_Apoderado_inherits_UsuarioSet" Association="BD_GBModel.Store.FK_UsuarioSet_Apoderado_inherits_UsuarioSet">
+      <End Role="UsuarioSet" EntitySet="UsuarioSet" />
+      <End Role="UsuarioSet_Apoderado" EntitySet="UsuarioSet_UsuarioSet_Apoderado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioSet_Educadora_inherits_UsuarioSet" Association="BD_GBModel.Store.FK_UsuarioSet_Educadora_inherits_UsuarioSet">
+      <End Role="UsuarioSet" EntitySet="UsuarioSet" />
+      <End Role="UsuarioSet_Educadora" EntitySet="UsuarioSet_UsuarioSet_Educadora" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ActividadesSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramasID" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdministradorSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rut" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Clave" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlumnoSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CursoID" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Edad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Genero" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Apoderado_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CursoSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramasID" Type="int" Nullable="false" />
+    <Property Name="Nivel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sala" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Periodo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EvaluacionesSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActividadesID" Type="int" Nullable="false" />
+    <Property Name="Calificaciones" Type="int" Nullable="false" />
+    <Property Name="AlumnoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProgramasSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ambito" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rut" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Clave" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioSet_UsuarioSet_Apoderado">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioSet_UsuarioSet_Educadora">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="CursoID" Type="int" Nullable="false" />
+    <Property Name="Rol" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArchivosSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo_archivo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ruta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ActividadesSetID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ActividadesEvaluaciones">
+    <End Role="ActividadesSet" Type="BD_GBModel.Store.ActividadesSet" Multiplicity="1" />
+    <End Role="EvaluacionesSet" Type="BD_GBModel.Store.EvaluacionesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadesSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EvaluacionesSet">
+        <PropertyRef Name="ActividadesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProgramasActividades">
+    <End Role="ProgramasSet" Type="BD_GBModel.Store.ProgramasSet" Multiplicity="1" />
+    <End Role="ActividadesSet" Type="BD_GBModel.Store.ActividadesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProgramasSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActividadesSet">
+        <PropertyRef Name="ProgramasID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlumnoEvaluaciones">
+    <End Role="AlumnoSet" Type="BD_GBModel.Store.AlumnoSet" Multiplicity="1" />
+    <End Role="EvaluacionesSet" Type="BD_GBModel.Store.EvaluacionesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlumnoSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EvaluacionesSet">
+        <PropertyRef Name="AlumnoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApoderadoAlumno">
+    <End Role="UsuarioSet_Apoderado" Type="BD_GBModel.Store.UsuarioSet_UsuarioSet_Apoderado" Multiplicity="1" />
+    <End Role="AlumnoSet" Type="BD_GBModel.Store.AlumnoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioSet_Apoderado">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AlumnoSet">
+        <PropertyRef Name="Apoderado_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CursoAlumno">
+    <End Role="CursoSet" Type="BD_GBModel.Store.CursoSet" Multiplicity="1" />
+    <End Role="AlumnoSet" Type="BD_GBModel.Store.AlumnoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CursoSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AlumnoSet">
+        <PropertyRef Name="CursoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CursoProgramas">
+    <End Role="ProgramasSet" Type="BD_GBModel.Store.ProgramasSet" Multiplicity="1" />
+    <End Role="CursoSet" Type="BD_GBModel.Store.CursoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProgramasSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CursoSet">
+        <PropertyRef Name="ProgramasID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FuncionarioCurso">
+    <End Role="CursoSet" Type="BD_GBModel.Store.CursoSet" Multiplicity="1" />
+    <End Role="UsuarioSet_Educadora" Type="BD_GBModel.Store.UsuarioSet_UsuarioSet_Educadora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CursoSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsuarioSet_Educadora">
+        <PropertyRef Name="CursoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArchivosActividadesSet">
+    <End Role="Archivos" Type="BD_GBModel.Store.ArchivosSet" Multiplicity="*" />
+    <End Role="ActividadesSet" Type="BD_GBModel.Store.ActividadesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadesSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Archivos">
+        <PropertyRef Name="ActividadesSetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioSet_Apoderado_inherits_UsuarioSet">
+    <End Role="UsuarioSet" Type="BD_GBModel.Store.UsuarioSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UsuarioSet_Apoderado" Type="BD_GBModel.Store.UsuarioSet_UsuarioSet_Apoderado" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsuarioSet_Apoderado">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioSet_Educadora_inherits_UsuarioSet">
+    <End Role="UsuarioSet" Type="BD_GBModel.Store.UsuarioSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UsuarioSet_Educadora" Type="BD_GBModel.Store.UsuarioSet_UsuarioSet_Educadora" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsuarioSet_Educadora">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_GBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActividadesSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramasID" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EvaluacionesSet" Relationship="Self.FK_ActividadesEvaluaciones" FromRole="ActividadesSet" ToRole="EvaluacionesSet" />
+          <NavigationProperty Name="ProgramasSet" Relationship="Self.FK_ProgramasActividades" FromRole="ActividadesSet" ToRole="ProgramasSet" />
+          <NavigationProperty Name="Archivos" Relationship="BD_GBModel.ArchivosActividadesSet" FromRole="ActividadesSet" ToRole="Archivos" />
+        </EntityType>
+        <EntityType Name="AdministradorSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AlumnoSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CursoID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Genero" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apoderado_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EvaluacionesSet" Relationship="Self.FK_AlumnoEvaluaciones" FromRole="AlumnoSet" ToRole="EvaluacionesSet" />
+          <NavigationProperty Name="UsuarioSet_Apoderado" Relationship="Self.FK_ApoderadoAlumno" FromRole="AlumnoSet" ToRole="UsuarioSet_Apoderado" />
+          <NavigationProperty Name="CursoSet" Relationship="Self.FK_CursoAlumno" FromRole="AlumnoSet" ToRole="CursoSet" />
+        </EntityType>
+        <EntityType Name="CursoSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramasID" Type="Int32" Nullable="false" />
+          <Property Name="Nivel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sala" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Periodo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AlumnoSet" Relationship="Self.FK_CursoAlumno" FromRole="CursoSet" ToRole="AlumnoSet" />
+          <NavigationProperty Name="ProgramasSet" Relationship="Self.FK_CursoProgramas" FromRole="CursoSet" ToRole="ProgramasSet" />
+          <NavigationProperty Name="UsuarioSet_Educadora" Relationship="Self.FK_FuncionarioCurso" FromRole="CursoSet" ToRole="UsuarioSet_Educadora" />
+        </EntityType>
+        <EntityType Name="EvaluacionesSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActividadesID" Type="Int32" Nullable="false" />
+          <Property Name="Calificaciones" Type="Int32" Nullable="false" />
+          <Property Name="AlumnoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ActividadesSet" Relationship="Self.FK_ActividadesEvaluaciones" FromRole="EvaluacionesSet" ToRole="ActividadesSet" />
+          <NavigationProperty Name="AlumnoSet" Relationship="Self.FK_AlumnoEvaluaciones" FromRole="EvaluacionesSet" ToRole="AlumnoSet" />
+        </EntityType>
+        <EntityType Name="ProgramasSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ambito" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ActividadesSet" Relationship="Self.FK_ProgramasActividades" FromRole="ProgramasSet" ToRole="ActividadesSet" />
+          <NavigationProperty Name="CursoSet" Relationship="Self.FK_CursoProgramas" FromRole="ProgramasSet" ToRole="CursoSet" />
+        </EntityType>
+        <EntityType Name="UsuarioSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioSet_Apoderado" BaseType="BD_GBModel.UsuarioSet">
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AlumnoSet" Relationship="Self.FK_ApoderadoAlumno" FromRole="UsuarioSet_Apoderado" ToRole="AlumnoSet" />
+        </EntityType>
+        <EntityType Name="UsuarioSet_Educadora" BaseType="BD_GBModel.UsuarioSet">
+          <Property Name="CursoID" Type="Int32" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CursoSet" Relationship="Self.FK_FuncionarioCurso" FromRole="UsuarioSet_Educadora" ToRole="CursoSet" />
+        </EntityType>
+        <Association Name="FK_ActividadesEvaluaciones">
+          <End Role="ActividadesSet" Type="Self.ActividadesSet" Multiplicity="1" />
+          <End Role="EvaluacionesSet" Type="Self.EvaluacionesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadesSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EvaluacionesSet">
+              <PropertyRef Name="ActividadesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramasActividades">
+          <End Role="ProgramasSet" Type="Self.ProgramasSet" Multiplicity="1" />
+          <End Role="ActividadesSet" Type="Self.ActividadesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramasSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActividadesSet">
+              <PropertyRef Name="ProgramasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AlumnoEvaluaciones">
+          <End Role="AlumnoSet" Type="Self.AlumnoSet" Multiplicity="1" />
+          <End Role="EvaluacionesSet" Type="Self.EvaluacionesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AlumnoSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EvaluacionesSet">
+              <PropertyRef Name="AlumnoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApoderadoAlumno">
+          <End Role="UsuarioSet_Apoderado" Type="Self.UsuarioSet_Apoderado" Multiplicity="1" />
+          <End Role="AlumnoSet" Type="Self.AlumnoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioSet_Apoderado">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AlumnoSet">
+              <PropertyRef Name="Apoderado_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoAlumno">
+          <End Role="CursoSet" Type="Self.CursoSet" Multiplicity="1" />
+          <End Role="AlumnoSet" Type="Self.AlumnoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AlumnoSet">
+              <PropertyRef Name="CursoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoProgramas">
+          <End Role="ProgramasSet" Type="Self.ProgramasSet" Multiplicity="1" />
+          <End Role="CursoSet" Type="Self.CursoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramasSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CursoSet">
+              <PropertyRef Name="ProgramasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FuncionarioCurso">
+          <End Role="CursoSet" Type="Self.CursoSet" Multiplicity="1" />
+          <End Role="UsuarioSet_Educadora" Type="Self.UsuarioSet_Educadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsuarioSet_Educadora">
+              <PropertyRef Name="CursoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_GBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActividadesSet" EntityType="Self.ActividadesSet" />
+          <EntitySet Name="AdministradorSet" EntityType="Self.AdministradorSet" />
+          <EntitySet Name="AlumnoSet" EntityType="Self.AlumnoSet" />
+          <EntitySet Name="CursoSet" EntityType="Self.CursoSet" />
+          <EntitySet Name="EvaluacionesSet" EntityType="Self.EvaluacionesSet" />
+          <EntitySet Name="ProgramasSet" EntityType="Self.ProgramasSet" />
+          <EntitySet Name="UsuarioSet" EntityType="Self.UsuarioSet" />
+          <AssociationSet Name="FK_ActividadesEvaluaciones" Association="Self.FK_ActividadesEvaluaciones">
+            <End Role="ActividadesSet" EntitySet="ActividadesSet" />
+            <End Role="EvaluacionesSet" EntitySet="EvaluacionesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramasActividades" Association="Self.FK_ProgramasActividades">
+            <End Role="ProgramasSet" EntitySet="ProgramasSet" />
+            <End Role="ActividadesSet" EntitySet="ActividadesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AlumnoEvaluaciones" Association="Self.FK_AlumnoEvaluaciones">
+            <End Role="AlumnoSet" EntitySet="AlumnoSet" />
+            <End Role="EvaluacionesSet" EntitySet="EvaluacionesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApoderadoAlumno" Association="Self.FK_ApoderadoAlumno">
+            <End Role="UsuarioSet_Apoderado" EntitySet="UsuarioSet" />
+            <End Role="AlumnoSet" EntitySet="AlumnoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoAlumno" Association="Self.FK_CursoAlumno">
+            <End Role="CursoSet" EntitySet="CursoSet" />
+            <End Role="AlumnoSet" EntitySet="AlumnoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoProgramas" Association="Self.FK_CursoProgramas">
+            <End Role="ProgramasSet" EntitySet="ProgramasSet" />
+            <End Role="CursoSet" EntitySet="CursoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FuncionarioCurso" Association="Self.FK_FuncionarioCurso">
+            <End Role="CursoSet" EntitySet="CursoSet" />
+            <End Role="UsuarioSet_Educadora" EntitySet="UsuarioSet" />
+          </AssociationSet>
+          <EntitySet Name="ArchivosSet" EntityType="BD_GBModel.Archivos" />
+          <AssociationSet Name="ArchivosActividadesSet" Association="BD_GBModel.ArchivosActividadesSet">
+            <End Role="Archivos" EntitySet="ArchivosSet" />
+            <End Role="ActividadesSet" EntitySet="ActividadesSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Archivos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" />
+          <Property Name="Tipo_archivo" Type="String" Nullable="false" />
+          <Property Name="Ruta" Type="String" Nullable="false" />
+          <NavigationProperty Name="ActividadesSet" Relationship="BD_GBModel.ArchivosActividadesSet" FromRole="Archivos" ToRole="ActividadesSet" />
+          <Property Name="ActividadesSetID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ArchivosActividadesSet">
+          <End Type="BD_GBModel.Archivos" Role="Archivos" Multiplicity="*" />
+          <End Type="BD_GBModel.ActividadesSet" Role="ActividadesSet" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadesSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="ActividadesSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_GBModelStoreContainer" CdmEntityContainer="BD_GBEntities">
+    <EntitySetMapping Name="ActividadesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.ActividadesSet)">
+        <MappingFragment StoreEntitySet="ActividadesSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProgramasID" ColumnName="ProgramasID" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministradorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.AdministradorSet)">
+        <MappingFragment StoreEntitySet="AdministradorSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlumnoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.AlumnoSet)">
+        <MappingFragment StoreEntitySet="AlumnoSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CursoID" ColumnName="CursoID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Apoderado_ID" ColumnName="Apoderado_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.CursoSet)">
+        <MappingFragment StoreEntitySet="CursoSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProgramasID" ColumnName="ProgramasID" />
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="Sala" ColumnName="Sala" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvaluacionesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.EvaluacionesSet)">
+        <MappingFragment StoreEntitySet="EvaluacionesSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ActividadesID" ColumnName="ActividadesID" />
+          <ScalarProperty Name="Calificaciones" ColumnName="Calificaciones" />
+          <ScalarProperty Name="AlumnoID" ColumnName="AlumnoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgramasSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.ProgramasSet)">
+        <MappingFragment StoreEntitySet="ProgramasSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ambito" ColumnName="Ambito" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.UsuarioSet)">
+        <MappingFragment StoreEntitySet="UsuarioSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.UsuarioSet_Apoderado)">
+        <MappingFragment StoreEntitySet="UsuarioSet_UsuarioSet_Apoderado">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.UsuarioSet_Educadora)">
+        <MappingFragment StoreEntitySet="UsuarioSet_UsuarioSet_Educadora">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CursoID" ColumnName="CursoID" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArchivosSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BD_GBModel.Archivos)">
+        <MappingFragment StoreEntitySet="ArchivosSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Tipo_archivo" ColumnName="Tipo_archivo" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="ActividadesSetID" ColumnName="ActividadesSetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
